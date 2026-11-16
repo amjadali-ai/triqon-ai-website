@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    background-color: #F5F2E9;
+    color: #272924;
+  }
+
+  body {
+    background-color: #F5F2E9;
+    color: #272924;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background-color: #2D483F;
+    color: #F5F2E9;
+  }
+}
+
+.editorial-grid {
+  background-image:
+    linear-gradient(to right, rgba(45, 72, 63, 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(45, 72, 63, 0.045) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
