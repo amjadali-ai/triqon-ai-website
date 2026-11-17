@@ -1,11 +1,12 @@
 import { motion } from "framer-motion";
-import { Workflow, Sparkles, BarChart3, Check } from "lucide-react";
+import { Workflow, Sparkles, BarChart3, Megaphone, Check, ArrowRight } from "lucide-react";
 import { SERVICES } from "@/data/siteData";
 
 const ICON_MAP = {
   "ai-automation": Workflow,
   "generative-ai": Sparkles,
   "data-science": BarChart3,
+  "digital-marketing": Megaphone,
 };
 
 const ACCENT_CLASSES = {
@@ -14,7 +15,17 @@ const ACCENT_CLASSES = {
   sage: "bg-sage/20 text-forest border-sage/35",
 };
 
-export function Services() {
+interface ServicesProps {
+  onSelectTopic?: (topic: string) => void;
+}
+
+export function Services({ onSelectTopic }: ServicesProps) {
+  const handleDiscuss = (topicLabel: string) => {
+    onSelectTopic?.(topicLabel);
+    const contactEl = document.getElementById("contact");
+    contactEl?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <section
       id="services"
@@ -22,20 +33,20 @@ export function Services() {
     >
       <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10">
         <div className="max-w-2xl space-y-4 mb-14">
-          <p className="text-xs font-mono uppercase tracking-[0.16em] text-terracotta font-medium">
+          <p className="text-xs font-mono tracking-[0.14em] text-terracotta font-medium">
             Our Services &amp; Focus Areas
           </p>
-          <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tight text-ink">
-            Three pillars of applied intelligence.
+          <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tight text-ink text-balance">
+            Four pillars of applied AI and digital growth.
           </h2>
           <p className="text-base text-ink-secondary leading-relaxed">
-            Our core engineering disciplines span workflow automation, generative AI,
-            and data science—designed to help organizations adopt AI thoughtfully as we
-            grow our solutions practice.
+            Our services span AI workflow automation, generative AI, data science,
+            and digital marketing—built to help businesses operate smarter and reach
+            more customers.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {SERVICES.map((service, idx) => {
             const Icon = ICON_MAP[service.id as keyof typeof ICON_MAP] || Workflow;
             return (
@@ -45,7 +56,7 @@ export function Services() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.45, delay: idx * 0.08 }}
-                className="group rounded-xl border border-ivory-border bg-ivory p-7 flex flex-col justify-between hover:border-forest/40 transition-colors"
+                className="group rounded-xl border border-ivory-border bg-ivory p-7 flex flex-col justify-between hover:border-forest/45 transition-colors"
               >
                 <div className="space-y-5">
                   <div className="flex items-center justify-between">
@@ -56,14 +67,14 @@ export function Services() {
                     >
                       <Icon className="w-5 h-5" />
                     </div>
-                    <span className="font-mono text-xs text-ink-muted">
+                    <span className="font-mono text-xs text-ink-muted tabular-nums">
                       {service.number}
                     </span>
                   </div>
 
                   <div className="space-y-2.5">
                     <h3 className="font-display text-xl font-bold text-ink">
-                      {service.title}
+                      {service.number}. {service.title}
                     </h3>
                     <p className="text-sm text-ink-secondary leading-relaxed">
                       {service.summary}
@@ -84,12 +95,14 @@ export function Services() {
                 </div>
 
                 <div className="pt-6 mt-6 border-t border-ivory-border">
-                  <a
-                    href="#contact"
-                    className="text-xs font-mono uppercase tracking-wider text-forest hover:text-terracotta transition-colors inline-flex items-center gap-1.5"
+                  <button
+                    type="button"
+                    onClick={() => handleDiscuss(service.topicLabel)}
+                    className="text-xs font-mono tracking-wider text-forest hover:text-terracotta transition-colors inline-flex items-center gap-1.5 whitespace-nowrap focus:outline-none focus-visible:ring-2 focus-visible:ring-forest rounded"
                   >
-                    Discuss {service.title} →
-                  </a>
+                    Discuss {service.title}
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </button>
                 </div>
               </motion.div>
             );

@@ -7,10 +7,10 @@ export function WhyTriqon() {
       <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           <div className="lg:col-span-4 space-y-4 lg:sticky lg:top-28">
-            <p className="text-xs font-mono uppercase tracking-[0.16em] text-terracotta font-medium">
+            <p className="text-xs font-mono tracking-[0.14em] text-terracotta font-medium">
               Why TRIQON AI?
             </p>
-            <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tight text-ink">
+            <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tight text-ink text-balance">
               Principles that guide how we build.
             </h2>
             <p className="text-base text-ink-secondary leading-relaxed">
@@ -29,7 +29,7 @@ export function WhyTriqon() {
                 transition={{ duration: 0.4, delay: idx * 0.05 }}
                 className="py-6 sm:py-7 grid grid-cols-1 sm:grid-cols-12 gap-3 sm:gap-6 items-baseline"
               >
-                <div className="sm:col-span-1 font-mono text-xs text-terracotta font-semibold">
+                <div className="sm:col-span-1 font-mono text-xs text-terracotta font-semibold tabular-nums">
                   {item.number}
                 </div>
                 <h3 className="sm:col-span-4 font-display text-lg font-bold text-ink">

@@ -27,20 +27,20 @@ export function About() {
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.45 }}
           className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start"
         >
           <div className="lg:col-span-5 space-y-5">
-            <p className="text-xs font-mono uppercase tracking-[0.16em] text-terracotta font-medium">
+            <p className="text-xs font-mono tracking-[0.14em] text-terracotta font-medium">
               About TRIQON AI
             </p>
-            <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tight text-ink leading-tight">
-              An emerging AI company built on practical engineering.
+            <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tight text-ink leading-tight text-balance">
+              Practical AI engineering and digital growth, built from the ground up.
             </h2>
             <p className="text-base text-ink-secondary leading-relaxed">
-              TRIQON AI brings together three co-founders united by a shared focus:
-              bridging the gap between rapidly advancing AI research and dependable,
-              everyday software that people and organizations can actually use.
+              TRIQON AI brings together three co-founders united by a clear focus:
+              turning modern AI research, workflow automation, and digital marketing
+              into dependable tools that businesses can actually use.
             </p>
             <div className="pt-2">
               <div className="inline-flex items-center gap-2 text-sm font-medium text-forest">
@@ -91,15 +91,10 @@ export function About() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-4 border-t border-ivory-border">
               {AUDIENCES.map((item) => (
-                <div
-                  key={item.title}
-                  className="p-4 rounded-lg border border-ivory-border bg-ivory"
-                >
-                  <h4 className="text-sm font-semibold text-ink mb-1.5">
-                    {item.title}
-                  </h4>
+                <div key={item.title} className="space-y-1.5">
+                  <h4 className="text-sm font-semibold text-ink">{item.title}</h4>
                   <p className="text-xs text-ink-muted leading-relaxed">
                     {item.detail}
                   </p>

@@ -2,6 +2,7 @@ export interface ServiceCategory {
   id: string;
   number: string;
   title: string;
+  topicLabel: string;
   summary: string;
   capabilities: string[];
   accent: "forest" | "sage" | "terracotta";
@@ -20,6 +21,7 @@ export interface ProfessionalProject {
 
 export interface GitHubRepository {
   name: string;
+  owner: string;
   url: string;
   description: string;
   language: string;
@@ -36,6 +38,8 @@ export interface FounderProfile {
   education?: string;
   currentRole?: string;
   expertise?: string[];
+  phone: string;
+  whatsapp: string;
   email?: string;
   linkedin: string;
   github?: string;
@@ -48,11 +52,10 @@ export interface PrincipleItem {
 }
 
 export const NAV_LINKS = [
-  { label: "Home", href: "#home" },
   { label: "About", href: "#about" },
   { label: "Services", href: "#services" },
   { label: "Projects", href: "#projects" },
-  { label: "Our Team", href: "#team" },
+  { label: "Team", href: "#team" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -61,6 +64,7 @@ export const SERVICES: ServiceCategory[] = [
     id: "ai-automation",
     number: "01",
     title: "AI Solutions & Automation",
+    topicLabel: "AI Solutions & Automation",
     summary:
       "Designing practical automation systems that connect language models with existing operational tools and reduce manual bottlenecks.",
     capabilities: [
@@ -75,6 +79,7 @@ export const SERVICES: ServiceCategory[] = [
     id: "generative-ai",
     number: "02",
     title: "Generative AI",
+    topicLabel: "Generative AI & RAG",
     summary:
       "Building grounded, domain-aware generative applications that reason over private knowledge bases with reliable retrieval.",
     capabilities: [
@@ -89,6 +94,7 @@ export const SERVICES: ServiceCategory[] = [
     id: "data-science",
     number: "03",
     title: "Data Science",
+    topicLabel: "Data Science & ML",
     summary:
       "Turning structured and operational datasets into clear analytical models, forecasts, and decision-ready software.",
     capabilities: [
@@ -99,6 +105,21 @@ export const SERVICES: ServiceCategory[] = [
     ],
     accent: "sage",
   },
+  {
+    id: "digital-marketing",
+    number: "04",
+    title: "Digital Marketing",
+    topicLabel: "Digital Marketing & Growth",
+    summary:
+      "Growing brand reach and qualified leads through modern digital marketing strategies, search optimization, and AI-assisted content workflows.",
+    capabilities: [
+      "Social media & brand growth",
+      "SEO & search visibility",
+      "AI-assisted content & campaigns",
+      "Lead generation & conversion strategy",
+    ],
+    accent: "terracotta",
+  },
 ];
 
 export const PROFESSIONAL_PROJECTS: ProfessionalProject[] = [
@@ -106,7 +127,7 @@ export const PROFESSIONAL_PROJECTS: ProfessionalProject[] = [
     id: "vortex",
     title: "Vortex",
     organization: "The Buildwick Inc",
-    attribution: "Individual Professional Experience — Faizan Haider",
+    attribution: "Faizan Haider",
     category: "Professional Experience",
     description:
       "An AI-powered enterprise phone system and revenue-cycle-management platform for dental practices, using Amazon Connect and LLMs.",
@@ -120,7 +141,7 @@ export const PROFESSIONAL_PROJECTS: ProfessionalProject[] = [
     id: "cliniqflow",
     title: "CliniqFlow",
     organization: "Healthcare SaaS",
-    attribution: "Individual Professional Experience — Faizan Haider",
+    attribution: "Faizan Haider",
     category: "Professional Experience",
     description:
       "A clinic and pharmacy SaaS platform designed for the Pakistani healthcare market.",
@@ -134,7 +155,7 @@ export const PROFESSIONAL_PROJECTS: ProfessionalProject[] = [
     id: "techlabz-rag",
     title: "Enterprise RAG Chatbot",
     organization: "Techlabz",
-    attribution: "Individual Professional Experience — Faizan Haider",
+    attribution: "Faizan Haider",
     category: "Professional Experience",
     description:
       "A production retrieval system using Groq, Pinecone, and Google embeddings to answer company and product queries over internal documentation.",
@@ -146,31 +167,36 @@ export const PROFESSIONAL_PROJECTS: ProfessionalProject[] = [
   },
 ];
 
-/**
- * Add verified public repositories from https://github.com/Faizanhaider013
- * as needed. Left empty until directly fetched/verified so no repo names are invented.
- */
-export const GITHUB_REPOSITORIES: GitHubRepository[] = [];
+export const GITHUB_REPOSITORIES: GitHubRepository[] = [
+  {
+    name: "My-AI-Mentor",
+    owner: "Amjad Ali",
+    url: "https://github.com/amjadali-ai/My-AI-Mentor",
+    description:
+      "AI-powered personal mentor and productivity automation app built with Google Gemini, React, TypeScript, and IndexedDB for smart goal tracking and daily workflows.",
+    language: "TypeScript · React",
+    topics: ["AI Automation", "Generative AI", "Google Gemini", "React"],
+  },
+  {
+    name: "triqon-ai-website",
+    owner: "Amjad Ali",
+    url: "https://github.com/amjadali-ai/triqon-ai-website",
+    description:
+      "Official TRIQON AI company website built with React, TypeScript, Tailwind CSS, and Vite to present our AI automation, generative AI, data science, and digital marketing services.",
+    language: "TypeScript · React",
+    topics: ["TRIQON AI", "React", "Digital Marketing", "Vite"],
+  },
+];
 
 export const FOUNDERS: FounderProfile[] = [
-  {
-    id: "amjad-ali",
-    name: "Amjad Ali",
-    role: "Co-founder",
-    initials: "AA",
-    bio: "Technology enthusiast and AI student focused on AI engineering, generative AI, and modern software development—building practical tools and learning how intelligent systems create everyday value.",
-    email: "itsamajdali.67@gmail.com",
-    linkedin: "https://www.linkedin.com/in/amjad-ali-ai/",
-  },
   {
     id: "faizan-haider",
     name: "Faizan Haider",
     role: "CEO & Co-founder | AI Engineer",
     featured: true,
     initials: "FH",
-    currentRole: "AI Engineer at AbbasAi solution (4 years experience)",
-    education: "B.S. in Data Science (AI Engineering track), UMT Lahore",
-    bio: "AI Engineer with 4 years of experience building and shipping production AI systems powered by LLMs, Retrieval-Augmented Generation, and agentic frameworks. Currently working full-time at AbbasAi solution. His experience includes designing end-to-end AI systems, RAG pipelines, multi-agent workflows, scalable FastAPI backends, and cloud-native serverless architectures on AWS.",
+    currentRole: "4 years of experience in AI Engineering",
+    bio: "AI Engineer with 4 years of experience building and shipping production AI systems powered by LLMs, Retrieval-Augmented Generation, and agentic frameworks. His background spans designing end-to-end AI systems, RAG pipelines, multi-agent workflows, scalable FastAPI backends, and cloud-native serverless architectures on AWS.",
     expertise: [
       "LangChain",
       "LangGraph",
@@ -186,16 +212,32 @@ export const FOUNDERS: FounderProfile[] = [
       "DynamoDB",
       "Amazon Connect",
     ],
+    phone: "+92 326 7979974",
+    whatsapp: "923267979974",
     email: "faizanhaider998@gmail.com",
     linkedin: "https://www.linkedin.com/in/faizan-haider998/",
     github: "https://github.com/Faizanhaider013",
+  },
+  {
+    id: "amjad-ali",
+    name: "Amjad Ali",
+    role: "Co-founder",
+    initials: "AA",
+    bio: "Co-founder focused on AI engineering, generative AI, and modern software development—building practical tools like My AI Mentor and intelligent web applications that deliver everyday business value.",
+    phone: "+92 329 5280316",
+    whatsapp: "923295280316",
+    email: "itsamajdali.67@gmail.com",
+    linkedin: "https://www.linkedin.com/in/amjad-ali-ai/",
+    github: "https://github.com/amjadali-ai",
   },
   {
     id: "zia-ur-rehman",
     name: "Zia Ur Rehman",
     role: "Co-founder",
     initials: "ZR",
-    bio: "Co-founder of TRIQON AI, collaborating with the founding team to shape the company's direction and build accessible, real-world AI solutions.",
+    bio: "Co-founder of TRIQON AI, collaborating with the founding team to shape company strategy, client partnerships, and accessible real-world AI and digital growth solutions.",
+    phone: "+92 336 9972771",
+    whatsapp: "923369972771",
     linkedin: "https://www.linkedin.com/in/zia-ur-rehman-854381354/",
   },
 ];
