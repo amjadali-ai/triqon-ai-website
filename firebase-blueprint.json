@@ -1,0 +1,89 @@
+{
+  "entities": {
+    "Feedback": {
+      "title": "Feedback",
+      "description": "Visitor website feedback submission (suggestion, issue report, or content correction).",
+      "type": "object",
+      "properties": {
+        "feedbackType": {
+          "type": "string",
+          "enum": ["Suggestion", "Report an Issue", "Content Correction"],
+          "description": "Category of the visitor feedback."
+        },
+        "pageSection": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80,
+          "description": "Website section related to the feedback."
+        },
+        "message": {
+          "type": "string",
+          "minLength": 8,
+          "maxLength": 2000,
+          "description": "Visitor suggestion or issue description."
+        },
+        "email": {
+          "type": "string",
+          "maxLength": 254,
+          "pattern": "^$|^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$",
+          "description": "Optional visitor reply email address (empty string if omitted)."
+        },
+        "pageUrl": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500,
+          "pattern": "^https?://.*",
+          "description": "URL of the page from which the feedback was submitted."
+        },
+        "status": {
+          "type": "string",
+          "enum": ["new", "reviewed", "resolved"],
+          "description": "Workflow state of the feedback item (must be 'new' on creation)."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp when the feedback was recorded."
+        }
+      },
+      "required": [
+        "feedbackType",
+        "pageSection",
+        "message",
+        "email",
+        "pageUrl",
+        "status",
+        "createdAt"
+      ]
+    },
+    "AdminUser": {
+      "title": "AdminUser",
+      "description": "Authorized admin user record for reviewing private feedback submissions.",
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "format": "email",
+          "maxLength": 254,
+          "description": "Verified email address of the administrator."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp when admin access was recorded."
+        }
+      },
+      "required": ["email", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/feedback/{feedbackId}": {
+      "schema": { "$ref": "#/entities/Feedback" },
+      "description": "Stores visitor website feedback submissions. Public create with strict schema validation; admin-only read/update/delete to protect visitor PII."
+    },
+    "/admins/{adminId}": {
+      "schema": { "$ref": "#/entities/AdminUser" },
+      "description": "Trusted admin lookup table for role verification. Strictly deny public access."
+    }
+  }
+}

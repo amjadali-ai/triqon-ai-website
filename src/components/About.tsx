@@ -1,101 +1,87 @@
 import { motion } from "framer-motion";
 import { Target, Compass, Layers, Users } from "lucide-react";
-
-const AUDIENCES = [
-  {
-    title: "Businesses Adopting AI",
-    detail:
-      "Organizations seeking practical automation, workflow optimization, and internal knowledge assistants.",
-  },
-  {
-    title: "Startups & Entrepreneurs",
-    detail:
-      "Founders building AI-native products who need clean engineering, RAG pipelines, and rapid iteration.",
-  },
-  {
-    title: "Individuals Exploring AI",
-    detail:
-      "Learners, builders, and professionals looking for accessible, real-world intelligent tools.",
-  },
-];
+import { useSiteContent } from "@/lib/contentLoader";
 
 export function About() {
+  const { about } = useSiteContent();
+
   return (
-    <section id="about" className="py-20 sm:py-24 border-b border-ivory-border">
-      <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10">
+    <section
+      id="about"
+      className="py-16 sm:py-20 lg:py-24 border-b border-ivory-border scroll-mt-20"
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.45 }}
-          className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start"
+          viewport={{ once: true, amount: "some" }}
+          transition={{ duration: 0.4 }}
+          className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start"
         >
-          <div className="lg:col-span-5 space-y-5">
-            <p className="text-xs font-mono tracking-[0.14em] text-terracotta font-medium">
-              About TRIQON AI
+          <div className="lg:col-span-5 space-y-4 sm:space-y-5 min-w-0">
+            <p className="text-xs font-mono tracking-[0.14em] text-terracotta-dark font-medium">
+              {about.eyebrow}
             </p>
-            <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tight text-ink leading-tight text-balance">
-              Practical AI engineering and digital growth, built from the ground up.
+            <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-ink leading-tight text-balance">
+              {about.heading}
             </h2>
-            <p className="text-base text-ink-secondary leading-relaxed">
-              TRIQON AI brings together three co-founders united by a clear focus:
-              turning modern AI research, workflow automation, and digital marketing
-              into dependable tools that businesses can actually use.
+            <p className="text-sm sm:text-base text-ink-secondary leading-relaxed max-w-[60ch]">
+              {about.description}
             </p>
-            <div className="pt-2">
+            <div className="pt-1">
               <div className="inline-flex items-center gap-2 text-sm font-medium text-forest">
-                <Users className="w-4 h-4 text-terracotta" />
-                <span>Built for businesses, startups, and individuals</span>
+                <Users className="w-4 h-4 text-terracotta-dark shrink-0" aria-hidden="true" />
+                <span>{about.audienceTag}</span>
               </div>
             </div>
           </div>
 
-          <div className="lg:col-span-7 space-y-6">
+          <div className="lg:col-span-7 space-y-5 sm:space-y-6 min-w-0">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               <div className="p-6 rounded-xl border border-ivory-border bg-ivory-light space-y-3">
                 <div className="w-9 h-9 rounded-lg bg-forest/10 text-forest flex items-center justify-center">
-                  <Compass className="w-5 h-5" />
+                  <Compass className="w-5 h-5" aria-hidden="true" />
                 </div>
-                <h3 className="font-display text-lg font-bold text-ink">Our Vision</h3>
+                <h3 className="font-display text-lg font-bold text-ink">
+                  {about.visionTitle}
+                </h3>
                 <p className="text-sm text-ink-secondary leading-relaxed">
-                  An AI company building intelligent solutions for businesses and
-                  individuals.
+                  {about.visionText}
                 </p>
               </div>
 
               <div className="p-6 rounded-xl border border-ivory-border bg-ivory-light space-y-3">
-                <div className="w-9 h-9 rounded-lg bg-terracotta/12 text-terracotta flex items-center justify-center">
-                  <Target className="w-5 h-5" />
+                <div className="w-9 h-9 rounded-lg bg-terracotta/12 text-terracotta-dark flex items-center justify-center">
+                  <Target className="w-5 h-5" aria-hidden="true" />
                 </div>
-                <h3 className="font-display text-lg font-bold text-ink">Our Mission</h3>
+                <h3 className="font-display text-lg font-bold text-ink">
+                  {about.missionTitle}
+                </h3>
                 <p className="text-sm text-ink-secondary leading-relaxed">
-                  To make intelligent technology more accessible by developing practical
-                  AI solutions that solve real-world problems.
+                  {about.missionText}
                 </p>
               </div>
             </div>
 
             <div className="p-6 rounded-xl border border-ivory-border bg-ivory-light space-y-3">
               <div className="flex items-center gap-3">
-                <div className="w-9 h-9 rounded-lg bg-sage/20 text-forest flex items-center justify-center">
-                  <Layers className="w-5 h-5" />
+                <div className="w-9 h-9 rounded-lg bg-sage/20 text-forest flex items-center justify-center shrink-0">
+                  <Layers className="w-5 h-5" aria-hidden="true" />
                 </div>
                 <h3 className="font-display text-lg font-bold text-ink">
-                  Our Approach &amp; Commitment
+                  {about.approachTitle}
                 </h3>
               </div>
               <p className="text-sm text-ink-secondary leading-relaxed">
-                We start with the problem, not the hype. By combining continuous
-                learning, disciplined software architecture, and transparent AI design,
-                we focus on building tools that fit cleanly into real workflows.
+                {about.approachText}
               </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-4 border-t border-ivory-border">
-              {AUDIENCES.map((item) => (
-                <div key={item.title} className="space-y-1.5">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 sm:gap-6 pt-4 border-t border-ivory-border">
+              {about.audiences.map((item) => (
+                <div key={item.title} className="space-y-1.5 min-w-0">
                   <h4 className="text-sm font-semibold text-ink">{item.title}</h4>
-                  <p className="text-xs text-ink-muted leading-relaxed">
+                  <p className="text-xs sm:text-sm text-ink-muted leading-relaxed">
                     {item.detail}
                   </p>
                 </div>

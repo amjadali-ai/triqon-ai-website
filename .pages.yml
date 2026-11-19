@@ -1,0 +1,288 @@
+media:
+  input: public/images
+  output: /images
+
+content:
+  - name: site_content
+    label: TRIQON AI Website Content
+    type: file
+    path: src/content/siteContent.json
+    fields:
+      - name: company
+        label: Company Contact & Brand Details
+        type: object
+        fields:
+          - name: name
+            label: Company Name
+            type: string
+            required: true
+          - name: tagline
+            label: Brand Tagline
+            type: string
+            required: true
+          - name: email
+            label: General Company Email
+            type: string
+            required: true
+          - name: websiteUrl
+            label: Production Website URL
+            type: string
+          - name: footerSummary
+            label: Footer Summary
+            type: text
+            required: true
+      - name: hero
+        label: Homepage Hero
+        type: object
+        fields:
+          - name: eyebrow
+            label: Top Line
+            type: string
+          - name: headlinePrefix
+            label: Headline First Part
+            type: string
+            required: true
+          - name: headlineAccent
+            label: Headline Highlighted Part
+            type: string
+            required: true
+          - name: lead
+            label: Primary Intro Paragraph
+            type: text
+            required: true
+          - name: sublead
+            label: Secondary Intro Paragraph
+            type: text
+          - name: primaryCta
+            label: Primary Button Label
+            type: string
+          - name: secondaryCta
+            label: Secondary Button Label
+            type: string
+          - name: cardHeader
+            label: Hero Card Label
+            type: string
+          - name: highlights
+            label: Hero Highlights Strip
+            type: object
+            list: true
+            fields:
+              - name: label
+                label: Label
+                type: string
+              - name: value
+                label: Summary
+                type: string
+      - name: about
+        label: About Section
+        type: object
+        fields:
+          - name: eyebrow
+            label: Eyebrow
+            type: string
+          - name: heading
+            label: Section Heading
+            type: string
+          - name: description
+            label: Overview Paragraph
+            type: text
+          - name: audienceTag
+            label: Audience Line
+            type: string
+          - name: visionTitle
+            label: Vision Heading
+            type: string
+          - name: visionText
+            label: Vision Copy
+            type: text
+          - name: missionTitle
+            label: Mission Heading
+            type: string
+          - name: missionText
+            label: Mission Copy
+            type: text
+          - name: approachTitle
+            label: Approach Heading
+            type: string
+          - name: approachText
+            label: Approach Copy
+            type: text
+          - name: audiences
+            label: Who We Serve
+            type: object
+            list: true
+            fields:
+              - name: title
+                label: Audience Title
+                type: string
+              - name: detail
+                label: Audience Description
+                type: text
+      - name: services
+        label: Services
+        type: object
+        list: true
+        fields:
+          - name: id
+            label: Service ID (ai-automation, generative-ai, data-science, digital-marketing)
+            type: string
+            required: true
+          - name: number
+            label: Number (e.g. 01)
+            type: string
+            required: true
+          - name: title
+            label: Service Title
+            type: string
+            required: true
+          - name: topicLabel
+            label: Contact Form Topic Label
+            type: string
+            required: true
+          - name: summary
+            label: Summary
+            type: text
+            required: true
+          - name: capabilities
+            label: Capabilities
+            type: string
+            list: true
+          - name: accent
+            label: Accent Color
+            type: select
+            options:
+              values:
+                - forest
+                - terracotta
+                - sage
+      - name: founders
+        label: Founders & Contact Details
+        type: object
+        list: true
+        fields:
+          - name: id
+            label: Founder ID
+            type: string
+            required: true
+          - name: name
+            label: Full Name
+            type: string
+            required: true
+          - name: role
+            label: Role
+            type: string
+            required: true
+          - name: featured
+            label: Featured Leadership Card
+            type: boolean
+          - name: initials
+            label: Initials
+            type: string
+          - name: currentRole
+            label: Experience Line (Optional)
+            type: string
+          - name: bio
+            label: Short Bio
+            type: text
+            required: true
+          - name: expertise
+            label: Technical Expertise (Optional)
+            type: string
+            list: true
+          - name: phone
+            label: Phone Number (Display)
+            type: string
+            required: true
+          - name: whatsapp
+            label: WhatsApp Number (Digits only, e.g. 923295280316)
+            type: string
+            required: true
+          - name: email
+            label: Personal Email (Optional)
+            type: string
+          - name: linkedin
+            label: LinkedIn URL
+            type: string
+            required: true
+          - name: github
+            label: GitHub URL (Optional)
+            type: string
+      - name: professionalProjects
+        label: Projects — Individual Professional Experience
+        type: object
+        list: true
+        fields:
+          - name: id
+            label: Project ID
+            type: string
+            required: true
+          - name: title
+            label: Project Name
+            type: string
+            required: true
+          - name: organization
+            label: Organization / Domain
+            type: string
+            required: true
+          - name: attribution
+            label: Attribution Label
+            type: string
+            required: true
+          - name: category
+            label: Category
+            type: string
+            default: Professional Experience
+          - name: description
+            label: Description
+            type: text
+            required: true
+          - name: stack
+            label: Technologies
+            type: string
+            list: true
+          - name: highlights
+            label: Key Highlights
+            type: string
+            list: true
+      - name: githubRepositories
+        label: Projects — Open Source & GitHub
+        type: object
+        list: true
+        fields:
+          - name: name
+            label: Repository Name
+            type: string
+            required: true
+          - name: owner
+            label: Owner Name
+            type: string
+            required: true
+          - name: url
+            label: Repository URL
+            type: string
+            required: true
+          - name: description
+            label: Description
+            type: text
+            required: true
+          - name: language
+            label: Stack / Language
+            type: string
+          - name: topics
+            label: Topics
+            type: string
+            list: true
+      - name: principles
+        label: Principles
+        type: object
+        list: true
+        fields:
+          - name: number
+            label: Number
+            type: string
+          - name: title
+            label: Title
+            type: string
+          - name: description
+            label: Description
+            type: text

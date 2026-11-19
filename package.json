@@ -13,6 +13,8 @@
     "esbuild": true
   },
   "dependencies": {
+    "@types/node": "^26.6.6",
+    "firebase": "^13.4.0",
     "framer-motion": "^11.11.17",
     "lucide-react": "^0.460.0",
     "react": "^18.3.1",

@@ -1,0 +1,283 @@
+{
+  "company": {
+    "name": "TRIQON AI",
+    "tagline": "Intelligence · Innovation · Impact",
+    "email": "triqonai@gmail.com",
+    "websiteUrl": "https://triqon-ai.vercel.app/",
+    "footerSummary": "A newly founded AI and digital solutions company building practical automation, generative AI applications, data science, and digital marketing for businesses and individuals."
+  },
+  "hero": {
+    "eyebrow": "TRIQON AI · Intelligence · Innovation · Impact",
+    "headlinePrefix": "Building Intelligence.",
+    "headlineAccent": "Creating Possibilities.",
+    "lead": "We build practical AI software, generative AI systems, workflow automation, and digital marketing solutions that help businesses operate clearly and grow.",
+    "sublead": "TRIQON AI is a newly founded technology company led by three co-founders—combining four years of production AI engineering experience with modern web development and digital growth.",
+    "primaryCta": "Start a Conversation",
+    "secondaryCta": "Explore Projects",
+    "cardHeader": "Core Service Pillars",
+    "highlights": [
+      {
+        "label": "01 · Services",
+        "value": "AI Automation, GenAI, Data Science & Digital Marketing"
+      },
+      {
+        "label": "02 · Founding Team",
+        "value": "New Venture · Led by 3 Co-Founders"
+      },
+      {
+        "label": "03 · Direct Access",
+        "value": "Company Email, WhatsApp & Phone Support"
+      }
+    ]
+  },
+  "about": {
+    "eyebrow": "About TRIQON AI",
+    "heading": "Practical AI engineering and digital growth, built from the ground up.",
+    "description": "TRIQON AI brings together three co-founders with a clear focus: turning modern AI engineering, workflow automation, and digital marketing into dependable tools that organizations and individuals can actually use.",
+    "audienceTag": "Built for businesses, startups, and individuals",
+    "visionTitle": "Our Vision",
+    "visionText": "To become a trusted technology partner delivering practical, understandable AI and digital solutions for businesses and individuals.",
+    "missionTitle": "Our Mission",
+    "missionText": "To make intelligent technology more accessible by building reliable software, automation, and digital growth systems grounded in real operational needs.",
+    "approachTitle": "Our Approach & Commitment",
+    "approachText": "We start with the problem, not the hype. By combining disciplined software architecture, transparent communication, and measurable workflow fit, we build tools designed to work reliably in everyday operations.",
+    "audiences": [
+      {
+        "title": "Businesses Adopting AI",
+        "detail": "Organizations seeking practical automation, workflow optimization, internal knowledge assistants, and stronger digital reach."
+      },
+      {
+        "title": "Startups & Entrepreneurs",
+        "detail": "Founders building AI-powered products who need clean engineering, retrieval pipelines, and dependable delivery."
+      },
+      {
+        "title": "Individuals Exploring AI",
+        "detail": "Builders and professionals looking for accessible, real-world intelligent tools and productivity software."
+      }
+    ]
+  },
+  "services": [
+    {
+      "id": "ai-automation",
+      "number": "01",
+      "title": "AI Solutions & Automation",
+      "topicLabel": "AI Solutions & Automation",
+      "summary": "Designing practical automation systems that connect language models with existing operational tools and reduce manual bottlenecks.",
+      "capabilities": [
+        "Intelligent business workflows",
+        "AI-powered task and process automation",
+        "Custom AI assistants and agents",
+        "Business process optimization"
+      ],
+      "accent": "forest"
+    },
+    {
+      "id": "generative-ai",
+      "number": "02",
+      "title": "Generative AI",
+      "topicLabel": "Generative AI & RAG",
+      "summary": "Building grounded, domain-aware generative applications that reason over private knowledge bases with reliable retrieval.",
+      "capabilities": [
+        "Large Language Model applications",
+        "Retrieval-Augmented Generation (RAG)",
+        "AI chatbots and knowledge assistants",
+        "Custom AI-powered web applications"
+      ],
+      "accent": "terracotta"
+    },
+    {
+      "id": "data-science",
+      "number": "03",
+      "title": "Data Science",
+      "topicLabel": "Data Science & ML",
+      "summary": "Turning structured and operational datasets into clear analytical models, forecasts, and decision-ready software.",
+      "capabilities": [
+        "Exploratory data analysis and reporting",
+        "Predictive modeling",
+        "Applied machine learning systems",
+        "Decision-ready operational insights"
+      ],
+      "accent": "sage"
+    },
+    {
+      "id": "digital-marketing",
+      "number": "04",
+      "title": "Digital Marketing",
+      "topicLabel": "Digital Marketing & Growth",
+      "summary": "Growing brand visibility and qualified leads through structured digital marketing strategies, search optimization, and AI-assisted content workflows.",
+      "capabilities": [
+        "Social media and brand growth",
+        "SEO and search visibility",
+        "AI-assisted content and campaign planning",
+        "Lead generation and conversion strategy"
+      ],
+      "accent": "terracotta"
+    }
+  ],
+  "professionalProjects": [
+    {
+      "id": "vortex",
+      "title": "Vortex",
+      "organization": "The Buildwick Inc",
+      "attribution": "Individual Experience — Faizan Haider",
+      "category": "Professional Experience",
+      "description": "An AI-powered enterprise phone system and revenue-cycle-management platform for dental practices, built with Amazon Connect and LLMs.",
+      "stack": [
+        "Amazon Connect",
+        "LLMs",
+        "AWS",
+        "Voice AI",
+        "Revenue Cycle Management"
+      ],
+      "highlights": [
+        "Enterprise telephony routing and automated voice workflows via Amazon Connect",
+        "LLM-assisted call handling tailored to dental practice revenue-cycle operations"
+      ]
+    },
+    {
+      "id": "cliniqflow",
+      "title": "CliniqFlow",
+      "organization": "Healthcare SaaS",
+      "attribution": "Individual Experience — Faizan Haider",
+      "category": "Professional Experience",
+      "description": "A clinic and pharmacy SaaS platform designed for the Pakistani healthcare market.",
+      "stack": [
+        "SaaS Architecture",
+        "Healthcare Workflows",
+        "Pharmacy Operations",
+        "Web Platform"
+      ],
+      "highlights": [
+        "Unified clinic and pharmacy management tailored to local healthcare workflows",
+        "Built for day-to-day operational reliability across clinical and dispensary teams"
+      ]
+    },
+    {
+      "id": "techlabz-rag",
+      "title": "Enterprise RAG Chatbot",
+      "organization": "Techlabz",
+      "attribution": "Individual Experience — Faizan Haider",
+      "category": "Professional Experience",
+      "description": "A production retrieval system using Groq, Pinecone, and Google embeddings to answer company and product queries over internal documentation.",
+      "stack": [
+        "Groq",
+        "Pinecone",
+        "Google Embeddings",
+        "RAG",
+        "Internal Docs"
+      ],
+      "highlights": [
+        "Low-latency inference with Groq paired with Pinecone vector indexing",
+        "Grounded question-answering over internal company and product documentation"
+      ]
+    }
+  ],
+  "githubRepositories": [
+    {
+      "name": "My-AI-Mentor",
+      "owner": "Amjad Ali",
+      "url": "https://github.com/amjadali-ai/My-AI-Mentor",
+      "description": "AI-powered personal mentor and productivity automation app built with Google Gemini, React, TypeScript, and IndexedDB for goal tracking and daily workflows.",
+      "language": "TypeScript · React",
+      "topics": [
+        "AI Automation",
+        "Generative AI",
+        "Google Gemini",
+        "React"
+      ]
+    },
+    {
+      "name": "triqon-ai-website",
+      "owner": "Amjad Ali",
+      "url": "https://github.com/amjadali-ai/triqon-ai-website",
+      "description": "Official TRIQON AI company website built with React, TypeScript, Tailwind CSS, and Vite to present our AI automation, generative AI, data science, and digital marketing services.",
+      "language": "TypeScript · React",
+      "topics": [
+        "TRIQON AI",
+        "React",
+        "Digital Marketing",
+        "Vite"
+      ]
+    }
+  ],
+  "founders": [
+    {
+      "id": "faizan-haider",
+      "name": "Faizan Haider",
+      "role": "CEO & Co-founder | AI Engineer",
+      "featured": true,
+      "initials": "FH",
+      "currentRole": "4 years of experience in AI Engineering",
+      "bio": "AI Engineer with 4 years of experience building and shipping production AI systems powered by LLMs, Retrieval-Augmented Generation, and agentic frameworks. His background spans end-to-end AI architectures, RAG pipelines, multi-agent workflows, scalable FastAPI backends, and cloud-native serverless deployments on AWS.",
+      "expertise": [
+        "LangChain",
+        "LangGraph",
+        "CrewAI",
+        "Pinecone",
+        "Groq",
+        "FastAPI",
+        "n8n",
+        "React / Next.js",
+        "AWS Lambda",
+        "API Gateway",
+        "S3",
+        "DynamoDB",
+        "Amazon Connect"
+      ],
+      "phone": "+92 326 7979974",
+      "whatsapp": "923267979974",
+      "email": "faizanhaider998@gmail.com",
+      "linkedin": "https://www.linkedin.com/in/faizan-haider998/",
+      "github": "https://github.com/Faizanhaider013"
+    },
+    {
+      "id": "amjad-ali",
+      "name": "Amjad Ali",
+      "role": "Co-founder",
+      "initials": "AA",
+      "bio": "Co-founder focused on AI engineering, generative AI, and modern web development—building practical tools such as My AI Mentor and intelligent software applications tailored for everyday use.",
+      "phone": "+92 329 5280316",
+      "whatsapp": "923295280316",
+      "email": "itsamajdali.67@gmail.com",
+      "linkedin": "https://www.linkedin.com/in/amjad-ali-ai/",
+      "github": "https://github.com/amjadali-ai"
+    },
+    {
+      "id": "zia-ur-rehman",
+      "name": "Zia Ur Rehman",
+      "role": "Co-founder",
+      "initials": "ZR",
+      "bio": "Co-founder of TRIQON AI, collaborating with the founding team on company direction, client relationships, and accessible AI and digital growth services.",
+      "phone": "+92 336 9972771",
+      "whatsapp": "923369972771",
+      "linkedin": "https://www.linkedin.com/in/zia-ur-rehman-854381354/"
+    }
+  ],
+  "principles": [
+    {
+      "number": "01",
+      "title": "Practical Innovation",
+      "description": "We focus on AI that solves real operational problems cleanly, prioritizing measurable usefulness over hype."
+    },
+    {
+      "number": "02",
+      "title": "Intelligent Problem Solving",
+      "description": "Every system starts with clear problem framing—combining retrieval, automation, and software engineering where each fits best."
+    },
+    {
+      "number": "03",
+      "title": "Continuous Learning",
+      "description": "AI evolves rapidly. We stay grounded in ongoing research, experimentation, and hands-on engineering discipline."
+    },
+    {
+      "number": "04",
+      "title": "Collaborative Development",
+      "description": "We work closely with businesses, startups, and individuals to shape solutions around actual workflows and needs."
+    },
+    {
+      "number": "05",
+      "title": "Responsible Technology",
+      "description": "We believe intelligent tools should be transparent, reliable, and built with clear accountability."
+    }
+  ]
+}
