@@ -1,9 +1,4 @@
 {
-  "functions": {
-    "api/feedback.ts": {
-      "includeFiles": "firebase-applet-config.json"
-    }
-  },
   "rewrites": [
     { "source": "/((?!api/).*)", "destination": "/index.html" }
   ],

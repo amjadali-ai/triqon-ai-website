@@ -1,6 +1,4 @@
-import { existsSync, readFileSync } from "node:fs";
 import { randomBytes } from "node:crypto";
-import { join } from "node:path";
 import type { IncomingMessage, ServerResponse } from "node:http";
 
 interface VercelRequest extends IncomingMessage {
@@ -12,11 +10,9 @@ interface VercelResponse extends ServerResponse {
   json?: (body: unknown) => void;
 }
 
-interface FirebaseAppletConfig {
-  projectId: string;
-  apiKey: string;
-  firestoreDatabaseId: string;
-}
+const DEFAULT_PROJECT_ID = "magnetic-element-t61jg";
+const DEFAULT_DATABASE_ID =
+  "ai-studio-triqonaiwebsite-83585e76-acaa-461b-8180-13390301e20d";
 
 const ALLOWED_TYPES = new Set([
   "Suggestion",
@@ -27,13 +23,13 @@ const ALLOWED_TYPES = new Set([
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const URL_PATTERN = /^https?:\/\/.+/;
 
-function loadFirebaseConfig(): FirebaseAppletConfig {
-  const cwdPath = join(process.cwd(), "firebase-applet-config.json");
-  if (existsSync(cwdPath)) {
-    return JSON.parse(readFileSync(cwdPath, "utf8")) as FirebaseAppletConfig;
-  }
-  const relativeUrl = new URL("../firebase-applet-config.json", import.meta.url);
-  return JSON.parse(readFileSync(relativeUrl, "utf8")) as FirebaseAppletConfig;
+function getFirestoreTarget() {
+  const projectId =
+    process.env.FIREBASE_PROJECT_ID?.trim() || DEFAULT_PROJECT_ID;
+  const databaseId =
+    process.env.FIREBASE_DATABASE_ID?.trim() || DEFAULT_DATABASE_ID;
+  const apiKey = process.env.FIREBASE_API_KEY?.trim() || "";
+  return { projectId, databaseId, apiKey };
 }
 
 function sendJson(res: VercelResponse, statusCode: number, payload: unknown) {
@@ -148,12 +144,13 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   try {
-    const config = loadFirebaseConfig();
+    const { projectId, databaseId, apiKey } = getFirestoreTarget();
     const feedbackId = `fb_${Date.now()}_${randomBytes(4).toString("hex")}`;
-    const docPath = `projects/${config.projectId}/databases/${config.firestoreDatabaseId}/documents/feedback/${feedbackId}`;
-    const commitUrl = `https://firestore.googleapis.com/v1/projects/${config.projectId}/databases/${config.firestoreDatabaseId}/documents:commit?key=${encodeURIComponent(
-      config.apiKey
-    )}`;
+    const docPath = `projects/${projectId}/databases/${databaseId}/documents/feedback/${feedbackId}`;
+    const baseCommitUrl = `https://firestore.googleapis.com/v1/projects/${projectId}/databases/${databaseId}/documents:commit`;
+    const commitUrl = apiKey
+      ? `${baseCommitUrl}?key=${encodeURIComponent(apiKey)}`
+      : baseCommitUrl;
 
     const firestoreResponse = await fetch(commitUrl, {
       method: "POST",

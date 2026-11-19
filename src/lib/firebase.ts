@@ -1,17 +1,67 @@
-import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
+import { initializeApp, type FirebaseApp } from "firebase/app";
+import { getAuth, type Auth } from "firebase/auth";
 import {
   getFirestore,
   doc,
   setDoc,
   getDocFromServer,
   serverTimestamp,
+  type Firestore,
 } from "firebase/firestore";
-import firebaseConfig from "../../firebase-applet-config.json";
 
-const app = initializeApp(firebaseConfig);
-export const db = getFirestore(app, firebaseConfig.firestoreDatabaseId);
-export const auth = getAuth(app);
+interface FirebaseAppletConfig {
+  projectId: string;
+  appId: string;
+  apiKey: string;
+  authDomain?: string;
+  firestoreDatabaseId?: string;
+  storageBucket?: string;
+  messagingSenderId?: string;
+  measurementId?: string;
+}
+
+const localConfigModules = import.meta.glob<{ default: FirebaseAppletConfig }>(
+  "../../firebase-applet-config.json",
+  { eager: true }
+);
+
+function resolveFirebaseConfig(): FirebaseAppletConfig | null {
+  const localModule = Object.values(localConfigModules)[0]?.default;
+  if (localModule?.projectId && localModule?.apiKey && localModule?.appId) {
+    return localModule;
+  }
+
+  const envApiKey = import.meta.env.VITE_FIREBASE_API_KEY?.trim();
+  const envProjectId = import.meta.env.VITE_FIREBASE_PROJECT_ID?.trim();
+  const envAppId = import.meta.env.VITE_FIREBASE_APP_ID?.trim();
+  if (envApiKey && envProjectId && envAppId) {
+    return {
+      apiKey: envApiKey,
+      projectId: envProjectId,
+      appId: envAppId,
+      authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN?.trim(),
+      firestoreDatabaseId: import.meta.env.VITE_FIREBASE_DATABASE_ID?.trim(),
+    };
+  }
+
+  return null;
+}
+
+const resolvedConfig = resolveFirebaseConfig();
+
+const app: FirebaseApp | null = resolvedConfig
+  ? initializeApp(resolvedConfig)
+  : null;
+
+export const db: Firestore | null =
+  app && resolvedConfig
+    ? resolvedConfig.firestoreDatabaseId
+      ? getFirestore(app, resolvedConfig.firestoreDatabaseId)
+      : getFirestore(app)
+    : null;
+
+export const auth: Auth | null = app ? getAuth(app) : null;
+export const isFirebaseClientConfigured = Boolean(db);
 
 export enum OperationType {
   CREATE = "create",
@@ -44,16 +94,17 @@ export function handleFirestoreError(
   operationType: OperationType,
   path: string | null
 ): never {
+  const currentUser = auth?.currentUser;
   const errInfo: FirestoreErrorInfo = {
     error: error instanceof Error ? error.message : String(error),
     authInfo: {
-      userId: auth.currentUser?.uid,
-      email: auth.currentUser?.email,
-      emailVerified: auth.currentUser?.emailVerified,
-      isAnonymous: auth.currentUser?.isAnonymous,
-      tenantId: auth.currentUser?.tenantId,
+      userId: currentUser?.uid,
+      email: currentUser?.email,
+      emailVerified: currentUser?.emailVerified,
+      isAnonymous: currentUser?.isAnonymous,
+      tenantId: currentUser?.tenantId,
       providerInfo:
-        auth.currentUser?.providerData?.map((provider) => ({
+        currentUser?.providerData?.map((provider) => ({
           providerId: provider.providerId,
           email: provider.email,
         })) || [],
@@ -66,6 +117,7 @@ export function handleFirestoreError(
 }
 
 async function testConnection() {
+  if (!db) return;
   try {
     await getDocFromServer(doc(db, "test", "connection"));
   } catch (error) {
@@ -98,6 +150,10 @@ function generateFeedbackId(): string {
 export async function submitFeedbackToFirestore(
   input: FeedbackSubmissionInput
 ): Promise<string> {
+  if (!db) {
+    throw new Error("Firebase client SDK is not configured in this environment.");
+  }
+
   const feedbackId = generateFeedbackId();
   const path = `feedback/${feedbackId}`;
   const safePageUrl = /^https?:\/\/.+/.test(input.pageUrl)

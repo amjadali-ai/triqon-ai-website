@@ -9,7 +9,10 @@ import {
   ShieldCheck,
 } from "lucide-react";
 import { useSiteContent } from "@/lib/contentLoader";
-import { submitFeedbackToFirestore } from "@/lib/firebase";
+import {
+  isFirebaseClientConfigured,
+  submitFeedbackToFirestore,
+} from "@/lib/firebase";
 
 type FeedbackType = "Suggestion" | "Report an Issue" | "Content Correction";
 
@@ -105,9 +108,11 @@ export function SiteFeedback() {
 
     try {
       let submissionId = "";
+      const targetEndpoint =
+        feedbackEndpoint || (!isFirebaseClientConfigured ? "/api/feedback" : "");
 
-      if (feedbackEndpoint) {
-        const response = await fetch(feedbackEndpoint, {
+      if (targetEndpoint) {
+        const response = await fetch(targetEndpoint, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
