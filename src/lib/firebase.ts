@@ -158,7 +158,7 @@ export async function submitFeedbackToFirestore(
   const path = `feedback/${feedbackId}`;
   const safePageUrl = /^https?:\/\/.+/.test(input.pageUrl)
     ? input.pageUrl.slice(0, 500)
-    : "https://triqon-ai.vercel.app/";
+    : "https://triqonai.pages.dev/";
 
   try {
     await setDoc(doc(db, "feedback", feedbackId), {
